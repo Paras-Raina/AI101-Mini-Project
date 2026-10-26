@@ -1,6 +1,6 @@
 ## AI101-Mini-Project
 
-# Predicting the Likelihood of Diabetes in Patients Based on Age, BMI, Blood Glucose, HbA1c, and Medical History Using Logistic Regression
+### Predicting the Likelihood of Diabetes in Patients Based on Age, BMI, Blood Glucose, HbA1c, and Medical History Using Logistic Regression
 Group - 53
 * Contributor 1 (Paras-Raina) : Paras Raina(2026EEB1389)
 * Contributor 2 (LTHULASIRAMREDDY) : Lakkireddy Thulasiram Reddy(2026EEB1371)
