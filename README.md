@@ -67,7 +67,7 @@ venv\Scripts\activate
 
 ### Step 3: Install Pinned Dependencies
 ```bash
-pip install --upgrade pip
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
