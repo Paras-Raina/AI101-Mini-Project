@@ -2,8 +2,6 @@
 
 Predicts the clinical likelihood of diabetes in patients from biometric and demographic indicators using regularized Logistic Regression with standardized feature scaling (pandas, scikit-learn, seaborn).
 
----
-
 ## 1. Project Overview & Problem Statement
 
 Diabetes mellitus is a chronic metabolic disorder marked by persistent hyperglycemia. Prolonged elevated blood glucose leads to severe vascular, renal, and neurological damage. Early risk stratification provides a vital clinical window for lifestyle intervention.
@@ -14,15 +12,13 @@ This project implements an end-to-end binary classification pipeline using **Log
 * **Dataset Scale:** 100,000 raw observations $\rightarrow$ 96,146 cleaned observations across 9 features.
 * **Prevalence / Imbalance:** 8.82% positive (Diabetic) vs. 91.18% negative (Non-Diabetic).
 
----
-
 ## 2. Team and Roles
 
 **Group 53 — AI101 Mini-Project**  
 *School of Artificial Intelligence and Data Engineering, IIT Ropar*
 
 | Member | Entry No. | Primary Role | Key Responsibilities |
-| :--- | :--- | :--- | :--- |
+| ----- | ----- | ----- | ----- |
 | **Manav Garg** | 2026MCB1543 | Documentation Lead | Repository documentation (`README.md`, `requirements.txt`), methodology write-up, metric interpretation, and academic reporting. |
 | **Dhonnar Satyam Ramesh** | 2026AIB1031 | Execution Lead | Pipeline implementation, data hygiene, train-test stratification, `StandardScaler` normalization, and model convergence. |
 | **Paras Raina** | 2026EEB1389 | PPT Lead | Slide deck curation, presentation storytelling, visual asset generation (heatmaps, box plots, confusion matrix layout). |
@@ -30,19 +26,16 @@ This project implements an end-to-end binary classification pipeline using **Log
 
 *All four members actively collaborated on code design, debugging, and experimental validation (verified via commit history).*
 
----
-
 ## 3. Project Structure
 
 ```text
-diabetes-prediction/
-├── diabetes_prediction_dataset.csv   # Raw clinical records (100,000 rows, 9 columns, ~3.6 MB)
-├── diabetes_prediction.ipynb         # Single-notebook pipeline (EDA, preprocessing, modeling, evaluation)
-├── requirements.txt                  # Python dependencies with pinned version ranges
-└── README.md                         # Standardized project documentation (TA briefing format)
+AI101-Mini-Project/
+├── Diabetes Prediction with Logistic Regression.pdf  # Project presentation deck and report
+├── README.md                                         # Comprehensive project documentation
+├── diabetes_prediction.ipynb                        # End-to-end pipeline (EDA, preprocessing, modeling, evaluation)
+├── diabetes_prediction_dataset.csv                  # Raw dataset (100,000 observations, 9 features)
+└── requirements.txt                                 # Pinned Python package dependencies
 ```
-
----
 
 ## 4. Setup
 
@@ -71,8 +64,6 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
----
-
 ## 5. Steps to Run
 
 The entire pipeline is consolidated inside `diabetes_prediction.ipynb` for linear reproducibility.
@@ -86,11 +77,24 @@ The entire pipeline is consolidated inside `diabetes_prediction.ipynb` for linea
    ```
 2. Navigate to the top menu and select **Kernel $\rightarrow$ Restart & Run All**.
 
-#### Option B: Headless Terminal Execution
-To run and verify the entire pipeline without opening a browser:
-```bash
-jupyter nbconvert --to notebook --execute diabetes_prediction.ipynb --output executed_run.ipynb
-```
+#### Option B: Headless Terminal Execution & Instant Viewing
+If you prefer running from the command line without opening Jupyter Notebook manually:
+
+* **Direct Terminal Output (prints metrics, shapes, and logs straight to stdout):**
+  ```bash
+  jupyter nbconvert --to script diabetes_prediction.ipynb --stdout | python -
+  ```
+
+* **Execute In-Place (saves execution outputs directly inside `diabetes_prediction.ipynb`):**
+  ```bash
+  jupyter nbconvert --execute --inplace diabetes_prediction.ipynb
+  ```
+
+* **Execute to Viewable HTML Report (auto-generates an HTML file with all figures and metrics you can double-click to view in any browser):**
+  ```bash
+  jupyter nbconvert --to html --execute diabetes_prediction.ipynb --output report.html
+  ```
+  *(To open `report.html`: run `open report.html` on macOS, `start report.html` on Windows, or `xdg-open report.html` on Linux)*
 
 ### Execution Flow & Runtime
 * **Cell 1–2:** Ingestion, structural inspection (`df.info()`, `df.dtypes`), and initial 5-row preview.
@@ -99,8 +103,6 @@ jupyter nbconvert --to notebook --execute diabetes_prediction.ipynb --output exe
 * **Cell 7:** `LogisticRegression(max_iter=1000)` training and coefficient extraction.
 * **Cell 8–11:** Feature visualization (Box plot), accuracy computation, precision/recall/F1 diagnostics, and confusion matrix rendering.
 * **Expected Runtime:** **< 15 seconds** on standard hardware (Intel i5/Apple M-series or higher).
-
----
 
 ## 6. Expected Output
 
@@ -150,7 +152,7 @@ F1-Score: 0.7323
 Summary statistics calculated over the 96,146 cleaned patient records:
 
 | Feature | Data Type | Mean | Median | Std Dev | Correlation ($r$) with Target | Model Weight ($\beta_j$) |
-| :--- | :--- | :---: | :---: | :---: | :---: | :---: |
+| ----- | ----- | :---: | :---: | :---: | :---: | :---: |
 | **HbA1c_level** | Continuous (`float64`) | 5.53 | 5.80 | 1.07 | **+0.4064** | **+2.4887** |
 | **blood_glucose_level** | Discrete (`int64`) | 138.22 | 140.00 | 40.91 | **+0.4243** | **+1.3645** |
 | **age** | Continuous (`float64`) | 41.79 | 43.00 | 22.46 | +0.2649 | **+1.0650** |
@@ -163,7 +165,7 @@ Summary statistics calculated over the 96,146 cleaned patient records:
 ### C. Performance & Error Analysis
 
 | Evaluation Metric | Training Set ($N = 76,916$) | Testing Set ($N = 19,230$) | Interpretation |
-| :--- | :---: | :---: | :--- |
+| ----- | :---: | :---: | ----- |
 | **Accuracy** | 95.86% | **95.91%** | Overall correct classification rate. |
 | **Classification Error** | 4.14% | **4.09%** | Total misclassification rate ($1 - \text{Accuracy}$). |
 | **Precision** | 0.8654 | **0.8669** | Out of all predicted diabetics, 86.69% truly had diabetes. |
@@ -183,15 +185,10 @@ Summary statistics calculated over the 96,146 cleaned patient records:
 2. **Glycemic Distribution Box Plot:** Displays a prominent shift in blood glucose levels between non-diabetic (median $\approx 130$ mg/dL) and diabetic cohorts (median $\approx 240$ mg/dL).
 3. **Confusion Matrices:** Side-by-side training vs. testing heatmaps illustrating robust model generalization without overfitting.
 
----
-
 ## 7. Links
 
-* **Presentation Slides:** `docs/Group53_Diabetes_Prediction_Slides.pdf` *(or add Google Slides link)*
-* **Project Walkthrough Video:** [YouTube Video Link](https://youtu.be/your-video-link-here) *(Video duration ~4:30)*
+* **Project Walkthrough Video:** [YouTube Video Walkthrough](https://youtu.be/B6jv8i9L7Uc)
 * **Dataset Reference:** [Kaggle Dataset by Mustafa T.](https://www.kaggle.com/datasets/iammustafatz/diabetes-prediction-dataset)
-
----
 
 ## 8. AI-Use Disclosure
 
