@@ -115,6 +115,7 @@ If you prefer running from the command line without opening Jupyter Notebook man
 * **Register Virtual Environment Kernel (run once if `nbconvert` cannot find your environment):**
   ```bash
   python -m ipykernel install --user --name=venv --display-name="Python (venv)"
+  ```
 * **Execute In-Place (saves execution outputs directly inside `diabetes_prediction.ipynb`):**
   ```bash
   jupyter nbconvert --execute --inplace diabetes_prediction.ipynb
