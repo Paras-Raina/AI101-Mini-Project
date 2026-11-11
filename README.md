@@ -238,7 +238,7 @@ Precision, recall, and harmonic F1-score breakdown across both training and hold
 
 ## 7. Links & Presentation Assets
 
-* **Presentation Deck & Report:** [Diabetes Prediction with Logistic Regression (PDF)](./Diabetes%20Prediction%20with%20Logistic%20Regression.pdf)
+* **Presentation Deck & Report:** [Diabetes Prediction with Logistic Regression (PDF)](https://drive.google.com/file/d/1wy3Md2aDZJoCAE9iOBq1WPc7Lc_b-j73/view)
 * **Project Walkthrough Video:** [YouTube Video Walkthrough](https://youtu.be/B6jv8i9L7Uc)
 * **Dataset Reference:** [Kaggle Dataset by Mustafa T.](https://www.kaggle.com/datasets/iammustafatz/diabetes-prediction-dataset)
 
