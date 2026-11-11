@@ -87,6 +87,10 @@ venv\Scripts\activate
 python -m venv venv
 venv\Scripts\Activate.ps1
 ```
+Note for Windows PowerShell: If you encounter a PSSecurityException or script execution error when running Activate.ps1, allow script execution for your active PowerShell session by running:
+```bash
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+```
 
 ### Step 3: Install Pinned Dependencies
 ```bash
