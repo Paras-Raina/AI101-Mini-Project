@@ -2,6 +2,8 @@
 
 Predicts the clinical likelihood of diabetes in patients from biometric and demographic indicators using regularized Logistic Regression with standardized feature scaling (pandas, scikit-learn, seaborn).
 
+---
+
 ## 1. Project Overview & Problem Statement
 
 Diabetes mellitus is a chronic metabolic disorder marked by persistent hyperglycemia. Prolonged elevated blood glucose leads to severe vascular, renal, and neurological damage. Early risk stratification provides a vital clinical window for lifestyle intervention.
@@ -12,13 +14,15 @@ This project implements an end-to-end binary classification pipeline using **Log
 * **Dataset Scale:** 100,000 raw observations $\rightarrow$ 96,146 cleaned observations across 9 features.
 * **Prevalence / Imbalance:** 8.82% positive (Diabetic) vs. 91.18% negative (Non-Diabetic).
 
+---
+
 ## 2. Team and Roles
 
 **Group 53 — AI101 Mini-Project**  
 *School of Artificial Intelligence and Data Engineering, IIT Ropar*
 
 | Member | Entry No. | Primary Role | Key Responsibilities |
-| ----- | ----- | ----- | ----- |
+| :--- | :--- | :--- | :--- |
 | **Manav Garg** | 2026MCB1543 | Documentation Lead | Repository documentation (`README.md`, `requirements.txt`), methodology write-up, metric interpretation, and academic reporting. |
 | **Dhonnar Satyam Ramesh** | 2026AIB1031 | Execution Lead | Pipeline implementation, data hygiene, train-test stratification, `StandardScaler` normalization, and model convergence. |
 | **Paras Raina** | 2026EEB1389 | PPT Lead | Slide deck curation, presentation storytelling, visual asset generation (heatmaps, box plots, confusion matrix layout). |
@@ -26,16 +30,25 @@ This project implements an end-to-end binary classification pipeline using **Log
 
 *All four members actively collaborated on code design, debugging, and experimental validation (verified via commit history).*
 
+---
+
 ## 3. Project Structure
 
 ```text
 AI101-Mini-Project/
+├── assets/                                           # Output visualizations and performance figures
+│   ├── correlation_heatmap.png                       # Feature correlation heatmap
+│   ├── blood_glucose_boxplot.png                     # Blood glucose distribution box plot
+│   ├── confusion_matrices.png                        # Training and testing confusion matrices
+│   └── evaluation_metrics.png                        # Precision, recall, and F1 scores summary
 ├── Diabetes Prediction with Logistic Regression.pdf  # Project presentation deck and report
 ├── README.md                                         # Comprehensive project documentation
-├── diabetes_prediction.ipynb                        # End-to-end pipeline (EDA, preprocessing, modeling, evaluation)
-├── diabetes_prediction_dataset.csv                  # Raw dataset (100,000 observations, 9 features)
-└── requirements.txt                                 # Pinned Python package dependencies
+├── diabetes_prediction.ipynb                         # End-to-end pipeline (EDA, preprocessing, modeling, evaluation)
+├── diabetes_prediction_dataset.csv                   # Raw dataset (100,000 observations, 9 features)
+└── requirements.txt                                  # Pinned Python package dependencies
 ```
+
+---
 
 ## 4. Setup
 
@@ -64,6 +77,8 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
+---
+
 ## 5. Steps to Run
 
 The entire pipeline is consolidated inside `diabetes_prediction.ipynb` for linear reproducibility.
@@ -84,12 +99,10 @@ If you prefer running from the command line without opening Jupyter Notebook man
   ```bash
   jupyter nbconvert --to script diabetes_prediction.ipynb --stdout | python -
   ```
-
 * **Execute In-Place (saves execution outputs directly inside `diabetes_prediction.ipynb`):**
   ```bash
   jupyter nbconvert --execute --inplace diabetes_prediction.ipynb
   ```
-
 * **Execute to Viewable HTML Report (auto-generates an HTML file with all figures and metrics you can double-click to view in any browser):**
   ```bash
   jupyter nbconvert --to html --execute diabetes_prediction.ipynb --output report.html
@@ -103,6 +116,8 @@ If you prefer running from the command line without opening Jupyter Notebook man
 * **Cell 7:** `LogisticRegression(max_iter=1000)` training and coefficient extraction.
 * **Cell 8–11:** Feature visualization (Box plot), accuracy computation, precision/recall/F1 diagnostics, and confusion matrix rendering.
 * **Expected Runtime:** **< 15 seconds** on standard hardware (Intel i5/Apple M-series or higher).
+
+---
 
 ## 6. Expected Output
 
@@ -148,11 +163,13 @@ Recall: 0.6338
 F1-Score: 0.7323
 ```
 
+---
+
 ### B. Statistical Summary of Model Features
 Summary statistics calculated over the 96,146 cleaned patient records:
 
 | Feature | Data Type | Mean | Median | Std Dev | Correlation ($r$) with Target | Model Weight ($\beta_j$) |
-| ----- | ----- | :---: | :---: | :---: | :---: | :---: |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: |
 | **HbA1c_level** | Continuous (`float64`) | 5.53 | 5.80 | 1.07 | **+0.4064** | **+2.4887** |
 | **blood_glucose_level** | Discrete (`int64`) | 138.22 | 140.00 | 40.91 | **+0.4243** | **+1.3645** |
 | **age** | Continuous (`float64`) | 41.79 | 43.00 | 22.46 | +0.2649 | **+1.0650** |
@@ -162,15 +179,21 @@ Summary statistics calculated over the 96,146 cleaned patient records:
 
 * **Model Intercept ($\beta_0$):** `-5.195` (Reflects the low baseline prior log-odds of diabetes in the population).
 
+---
+
 ### C. Performance & Error Analysis
 
 | Evaluation Metric | Training Set ($N = 76,916$) | Testing Set ($N = 19,230$) | Interpretation |
-| ----- | :---: | :---: | ----- |
+| :--- | :---: | :---: | :--- |
 | **Accuracy** | 95.86% | **95.91%** | Overall correct classification rate. |
 | **Classification Error** | 4.14% | **4.09%** | Total misclassification rate ($1 - \text{Accuracy}$). |
 | **Precision** | 0.8654 | **0.8669** | Out of all predicted diabetics, 86.69% truly had diabetes. |
 | **Recall (Sensitivity)** | 0.6284 | **0.6338** | The model identifies 63.38% of all true diabetic patients. |
 | **F1-Score** | 0.7281 | **0.7323** | Harmonic mean balancing precision and recall. |
+
+<p align="center">
+  <img src="assets/evaluation_metrics.png" alt="Training and Testing Metrics" width="300" />
+</p>
 
 #### Confusion Matrix Breakdown (Test Set: $N = 19,230$)
 * **True Negatives (TN):** `17,369` (Correctly identified healthy patients)
@@ -180,15 +203,40 @@ Summary statistics calculated over the 96,146 cleaned patient records:
 
 > **Key Clinical Finding:** While the test accuracy is high (95.91%), the baseline class imbalance (91.18% non-diabetic) means that a naive zero-rule classifier would achieve 91.18% accuracy. The clinical bottleneck lies in the **False Negatives (621 missed cases out of 1,696 actual positives)**. In real-world screening, lowering the decision threshold from 0.5 to ~0.3 or applying `class_weight='balanced'` is recommended to maximize recall.
 
+---
+
 ### D. Generated Visual Artifacts
-1. **Correlation Heatmap (`sns.heatmap`):** Confirms that multicollinearity between inputs is low (highest pairwise correlation is `age` vs. `bmi` at $r = 0.34$), ensuring stable logistic regression coefficients.
-2. **Glycemic Distribution Box Plot:** Displays a prominent shift in blood glucose levels between non-diabetic (median $\approx 130$ mg/dL) and diabetic cohorts (median $\approx 240$ mg/dL).
-3. **Confusion Matrices:** Side-by-side training vs. testing heatmaps illustrating robust model generalization without overfitting.
 
-## 7. Links
+#### 1. Correlation Heatmap
+Confirms that multicollinearity between inputs is low (highest pairwise correlation is `age` vs. `bmi` at $r = 0.34$), ensuring stable logistic regression coefficients.
 
+<p align="center">
+  <img src="assets/correlation_heatmap.png" alt="Feature Correlation Heatmap" width="600" />
+</p>
+
+#### 2. Glycemic Distribution Box Plot
+Displays a prominent shift in blood glucose levels between non-diabetic (median $\approx 130$ mg/dL) and diabetic cohorts (median $\approx 240$ mg/dL).
+
+<p align="center">
+  <img src="assets/blood_glucose_boxplot.png" alt="Blood Glucose Levels vs Diabetes Boxplot" width="550" />
+</p>
+
+#### 3. Confusion Matrices
+Side-by-side training vs. testing heatmaps illustrating robust model generalization without overfitting.
+
+<p align="center">
+  <img src="assets/confusion_matrices.png" alt="Training and Testing Confusion Matrices" width="700" />
+</p>
+
+---
+
+## 7. Links & Presentation Assets
+
+* **Presentation Deck & Report:** [Diabetes Prediction with Logistic Regression (PDF)](./Diabetes%20Prediction%20with%20Logistic%20Regression.pdf)
 * **Project Walkthrough Video:** [YouTube Video Walkthrough](https://youtu.be/B6jv8i9L7Uc)
 * **Dataset Reference:** [Kaggle Dataset by Mustafa T.](https://www.kaggle.com/datasets/iammustafatz/diabetes-prediction-dataset)
+
+---
 
 ## 8. AI-Use Disclosure
 
