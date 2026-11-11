@@ -50,7 +50,7 @@ Tested and verified on **Python 3.10** and **Python 3.11** across Windows, macOS
 
 ### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/<your-username>/AI101-Mini-Project.git
+git clone https://github.com/Paras-Raina/AI101-Mini-Project.git
 cd AI101-Mini-Project
 ```
 
