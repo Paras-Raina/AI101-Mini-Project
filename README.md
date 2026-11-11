@@ -52,7 +52,21 @@ AI101-Mini-Project/
 
 ## 4. Setup
 
-Tested and verified on **Python 3.10** and **Python 3.11** across Windows, macOS, and Ubuntu.
+### Prerequisites
+
+Ensure the following tools and system requirements are met before proceeding:
+
+1. **Git:** Distributed version control system (`git --version` $\ge 2.25$).
+2. **Python:** CPython runtime version **3.10** or **3.11** (`python --version` or `python3 --version`).
+3. **pip:** Python package manager (`pip --version` $\ge 21.0$).
+4. **Virtual Environment Module:** Standard Python virtual environment support (`venv` or `virtualenv`).
+5. **System Resources:**
+   * **RAM:** Minimum 4 GB recommended (dataset loads into $\approx 100$ MB in memory).
+   * **Disk Space:** At least 250 MB free disk space for cloned repository, virtual environment, and generated artifacts.
+   * **Operating System:** Tested on Windows 10/11, macOS (Intel & Apple Silicon), and Ubuntu/Debian Linux.
+6. **Web Browser (Optional):** Required only if launching the interactive Jupyter Notebook interface or viewing the exported HTML report.
+
+---
 
 ### Step 1: Clone the Repository
 ```bash
@@ -163,8 +177,6 @@ Recall: 0.6338
 F1-Score: 0.7323
 ```
 
----
-
 ### B. Statistical Summary of Model Features
 Summary statistics calculated over the 96,146 cleaned patient records:
 
@@ -179,8 +191,6 @@ Summary statistics calculated over the 96,146 cleaned patient records:
 
 * **Model Intercept ($\beta_0$):** `-5.195` (Reflects the low baseline prior log-odds of diabetes in the population).
 
----
-
 ### C. Performance & Error Analysis
 
 | Evaluation Metric | Training Set ($N = 76,916$) | Testing Set ($N = 19,230$) | Interpretation |
@@ -191,10 +201,6 @@ Summary statistics calculated over the 96,146 cleaned patient records:
 | **Recall (Sensitivity)** | 0.6284 | **0.6338** | The model identifies 63.38% of all true diabetic patients. |
 | **F1-Score** | 0.7281 | **0.7323** | Harmonic mean balancing precision and recall. |
 
-<p align="center">
-  <img src="assets/evaluation_metrics.png" alt="Training and Testing Metrics" width="300" />
-</p>
-
 #### Confusion Matrix Breakdown (Test Set: $N = 19,230$)
 * **True Negatives (TN):** `17,369` (Correctly identified healthy patients)
 * **True Positives (TP):** `1,075` (Correctly flagged diabetic patients)
@@ -203,30 +209,23 @@ Summary statistics calculated over the 96,146 cleaned patient records:
 
 > **Key Clinical Finding:** While the test accuracy is high (95.91%), the baseline class imbalance (91.18% non-diabetic) means that a naive zero-rule classifier would achieve 91.18% accuracy. The clinical bottleneck lies in the **False Negatives (621 missed cases out of 1,696 actual positives)**. In real-world screening, lowering the decision threshold from 0.5 to ~0.3 or applying `class_weight='balanced'` is recommended to maximize recall.
 
----
-
 ### D. Generated Visual Artifacts
 
 #### 1. Correlation Heatmap
+![Correlation Heatmap](assets/correlation_heatmap.png)  
 Confirms that multicollinearity between inputs is low (highest pairwise correlation is `age` vs. `bmi` at $r = 0.34$), ensuring stable logistic regression coefficients.
 
-<p align="center">
-  <img src="assets/correlation_heatmap.png" alt="Feature Correlation Heatmap" width="600" />
-</p>
-
 #### 2. Glycemic Distribution Box Plot
+![Blood Glucose Levels vs Diabetes Boxplot](assets/blood_glucose_boxplot.png)  
 Displays a prominent shift in blood glucose levels between non-diabetic (median $\approx 130$ mg/dL) and diabetic cohorts (median $\approx 240$ mg/dL).
 
-<p align="center">
-  <img src="assets/blood_glucose_boxplot.png" alt="Blood Glucose Levels vs Diabetes Boxplot" width="550" />
-</p>
-
 #### 3. Confusion Matrices
+![Confusion Matrices](assets/confusion_matrices.png)  
 Side-by-side training vs. testing heatmaps illustrating robust model generalization without overfitting.
 
-<p align="center">
-  <img src="assets/confusion_matrices.png" alt="Training and Testing Confusion Matrices" width="700" />
-</p>
+#### 4. Classification Metrics Summary
+![Evaluation Metrics](assets/evaluation_metrics.png)  
+Precision, recall, and harmonic F1-score breakdown across both training and holdout test partitions.
 
 ---
 
