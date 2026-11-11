@@ -79,9 +79,13 @@ cd AI101-Mini-Project
 python3 -m venv venv
 source venv/bin/activate
 
-# Windows (Command Prompt / PowerShell):
+# Windows (Command Prompt):
 python -m venv venv
 venv\Scripts\activate
+
+# Windows (PowerShell):
+python -m venv venv
+venv\Scripts\Activate.ps1
 ```
 
 ### Step 3: Install Pinned Dependencies
@@ -108,10 +112,9 @@ The entire pipeline is consolidated inside `diabetes_prediction.ipynb` for linea
 #### Option B: Headless Terminal Execution & Instant Viewing
 If you prefer running from the command line without opening Jupyter Notebook manually:
 
-* **Direct Terminal Output (prints metrics, shapes, and logs straight to stdout):**
+* **Register Virtual Environment Kernel (run once if `nbconvert` cannot find your environment):**
   ```bash
-  jupyter nbconvert --to script diabetes_prediction.ipynb --stdout | python -
-  ```
+  python -m ipykernel install --user --name=venv --display-name="Python (venv)"
 * **Execute In-Place (saves execution outputs directly inside `diabetes_prediction.ipynb`):**
   ```bash
   jupyter nbconvert --execute --inplace diabetes_prediction.ipynb
