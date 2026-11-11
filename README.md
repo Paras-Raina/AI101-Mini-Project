@@ -23,10 +23,10 @@ This project implements an end-to-end binary classification pipeline using **Log
 
 | Member | Entry No. | Primary Role | Key Responsibilities |
 | :--- | :--- | :--- | :--- |
-| **Manav Garg** | 2026MCB1543 | Documentation Lead | Repository documentation (`README.md`, `requirements.txt`), methodology write-up, metric interpretation, and academic reporting. |
-| **Dhonnar Satyam Ramesh** | 2026AIB1031 | Execution Lead | Pipeline implementation, data hygiene, train-test stratification, `StandardScaler` normalization, and model convergence. |
-| **Paras Raina** | 2026EEB1389 | PPT Lead | Slide deck curation, presentation storytelling, visual asset generation (heatmaps, box plots, confusion matrix layout). |
-| **Lakkireddy Thulasiram Reddy** | 2026EEB1371 | Video Lead | Technical video walkthrough, audio narration, workflow screen recordings, and submission asset packaging. |
+| **Manav Garg** | 2026MCB1543 | Documentation Lead | Repository documentation (`README.md`), methodology write-up, evaluation metric verification (recall, precision, F1-score), and academic reporting. |
+| **Dhonnar Satyam Ramesh** | 2026AIB1031 | Execution Lead | Pipeline execution, dependency specification (`requirements.txt`), `StandardScaler` normalization, model testing, and validation. |
+| **Paras Raina** | 2026EEB1389 | PPT Lead | Slide deck curation, data pre-processing and hygiene, visual asset generation (heatmaps), and presentation storytelling. |
+| **Lakkireddy Thulasiram Reddy** | 2026EEB1371 | Video Lead | Technical video walkthrough, model training, parameter inspection, audio narration, and submission asset packaging. |
 
 *All four members actively collaborated on code design, debugging, and experimental validation (verified via commit history).*
 
@@ -57,14 +57,13 @@ AI101-Mini-Project/
 Ensure the following tools and system requirements are met before proceeding:
 
 1. **Git:** Distributed version control system (`git --version` $\ge 2.25$).
-2. **Python:** CPython runtime version **3.10** or **3.11** (`python --version` or `python3 --version`).
+2. **Python:** CPython runtime version **3.12 or later** (`python --version` or `python3 --version`).
 3. **pip:** Python package manager (`pip --version` $\ge 21.0$).
-4. **Virtual Environment Module:** Standard Python virtual environment support (`venv` or `virtualenv`).
-5. **System Resources:**
+4. **System Resources:**
    * **RAM:** Minimum 4 GB recommended (dataset loads into $\approx 100$ MB in memory).
-   * **Disk Space:** At least 250 MB free disk space for cloned repository, virtual environment, and generated artifacts.
+   * **Disk Space:** At least **700 MB** free disk space for cloned repository, virtual environment, and generated artifacts.
    * **Operating System:** Tested on Windows 10/11, macOS (Intel & Apple Silicon), and Ubuntu/Debian Linux.
-6. **Web Browser (Optional):** Required only if launching the interactive Jupyter Notebook interface or viewing the exported HTML report.
+5. **Web Browser (Optional):** Required only if launching the interactive Jupyter Notebook interface or viewing the exported HTML report.
 
 ---
 
@@ -241,9 +240,10 @@ Precision, recall, and harmonic F1-score breakdown across both training and hold
 
 In accordance with course guidelines for the AI101 Mini-Project:
 
-* **Tools Used:** Google Gemini 3 Flash / OpenAI ChatGPT.
+* **Tools Used:** Google Gemini 3 Flash / OpenAI ChatGPT / Anthropic Claude.
 * **Scope of Assistance:**
   1. Assisting with the structure and markdown formatting of the `README.md` to ensure compliance with the 8-point TA evaluation rubric.
   2. Formatting the `requirements.txt` environment specification with compatible version bounds.
   3. Formulating the clinical error analysis section (accuracy paradox and false-negative trade-off).
+  4. AI assistance in generating presentation slides and layout structure.
 * **Human Verification:** All exploratory data analysis, data cleaning logic, feature scaling, model fitting, and quantitative metric calculations were run natively by Group 53 in Python using Jupyter Notebook, verified against the mathematical definitions, and presented by team members in the project video.
